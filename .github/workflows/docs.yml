@@ -16,28 +16,22 @@ jobs:
         with:
           # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
           fetch-depth: 0
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install
-
-      - name: Build documentation site
-        run: pnpm run build
+        run: npm install
 
       - name: Build
-        run: |
-          npm install
-          npm run build
+        run: npm run build
+
+      # - name: Build
+      #   run: |
+      #     npm install
+      #     npm run build
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
